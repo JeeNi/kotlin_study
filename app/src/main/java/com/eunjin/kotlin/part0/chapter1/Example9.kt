@@ -1,8 +1,9 @@
 package com.eunjin.kotlin
 
 fun main() {
-    cast("안녕")
-    cast(10)
+    println(smartCast("안녕"))
+    println(smartCast(10))
+    println(smartCast(true))
 }
 
 fun check(a: Any): String {
@@ -19,6 +20,15 @@ fun check(a: Any): String {
     }
 }
 fun cast(a: Any) {
-    val result = a as? String
+    val result = (a as? String) ?:"실패"
     println(result)
+}
+fun smartCast(a: Any): Int {
+    return if (a is String) {
+        a.length
+    } else if (a is Int) {
+        a.dec()
+    } else {
+        -1
+    }
 }
